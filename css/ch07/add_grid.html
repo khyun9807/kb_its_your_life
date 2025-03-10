@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .pizzaria {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 80px 80px 80px;
+        gap: 10px;
+        width: 600px;
+        height: 300px;
+        background-color: #fff8bc;
+        border: 4px solid tomato;
+        padding: 10px;
+      }
+      .table {
+        background-color: lightcoral;
+        border: 2px solid brown;
+        text-align: center;
+        font-weight: bold;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .vip {
+        /* 1열부터 3칸 차지 */
+        grid-column: 1 / span 3;
+      }
+      .window {
+        /* 2행부터 2칸 차지 */
+        grid-row: 2 / span 2;
+      }
+      .upstairs {
+        /* 자기 자신 수평 정렬 */
+        justify-self: end;
+        /* 자기 자신 수직 정렬 */
+        align-self: end;
+        background-color: mediumseagreen;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>피자 가게 테이블</h1>
+    <p>css grid로 테이블</p>
+
+    <div class="pizzaria">
+      <div class="table vip">vip table</div>
+      <div class="table">table1</div>
+      <div class="table window">window</div>
+      <div class="table">table2</div>
+      <div class="table upstairs">2nd table</div>
+    </div>
+  </body>
+</html>

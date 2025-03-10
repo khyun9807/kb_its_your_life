@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let arr = [1, 2, 'dbs'];
+      for (let i = 0; i < arr.length; i++) {
+        alert(arr[i]);
+      }
+
+      class Temp {}
+      let arr2 = [1, , 2, 3, , 'dbs2'];
+      for (let i in arr2) {
+        console.log(i);
+      }
+
+      for (let i of arr2) {
+        console.log(i);
+      }
+
+      let obj = {
+        key1: 'value1',
+        key2: 2,
+      };
+
+      for (let i in obj) {
+        console.log(i);
+      }
+
+      //   for (let i of obj) {
+      //     console.log(i);
+      //   }
+    </script>
+  </head>
+  <body></body>
+</html>

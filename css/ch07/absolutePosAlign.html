@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0px;
+        margin: 0px;
+      }
+      body {
+        background: pink;
+      }
+      #container {
+        background: red;
+        width: 600px;
+        height: 400px;
+
+        position: relative;
+      }
+      #target {
+        background: orange;
+        height: 150px;
+        width: 250px;
+
+        text-align: center;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        margin-top: -75px;
+        margin-left: -125px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="target">
+        <h1>요소 중앙</h1>
+      </div>
+    </div>
+  </body>
+</html>
