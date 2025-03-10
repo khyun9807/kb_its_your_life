@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let squirtle = { name: '꼬부기', hp: 50, attack: 10, type: '물' };
+      let bulbasaur = { name: '이상해씨', hp: 50, attack: 8, type: '풀' };
+      let attrarr = {
+        //   쎄개 약하게
+        물: ['불', '풀'],
+        풀: ['물', '불'],
+        불: ['풀', '물'],
+      };
+      function battle(attacker, reciever) {
+        let attackPower;
+        let sangsung = attrarr[`${attacker.type}`];
+
+        if (sangsung[0] == reciever.type) {
+          attackPower = 2 * attacker.attack;
+        } else if (sangsung[1] == reciever.type) {
+          attackPower = attacker.attack / 2;
+        } else {
+          attackPower = attacker.attack;
+        }
+
+        console.log(
+          `${attacker.name}이(가) ${reciever.name}을(를) 공격했다! (피해량: ${attackPower})`
+        );
+        reciever.hp -= attackPower;
+
+        console.log(`${reciever.name}의 남은 체력: ${reciever.hp}`);
+      }
+
+      battle(squirtle, bulbasaur);
+      battle(bulbasaur, squirtle);
+    </script>
+  </head>
+  <body></body>
+</html>

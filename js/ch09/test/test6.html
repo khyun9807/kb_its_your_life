@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let charmander = { name: '파이리', level: 14, evolution: '리자드' };
+      let pikachu = { name: '피카츄', level: 20, evolution: null };
+
+      function levelUp(obj) {
+        obj.level += 1;
+        console.log(`${obj.name}의 레벨이 ${obj.level}이(가) 되었다!`);
+        if (obj.level >= 16 && obj.evolution != null) {
+          console.log(`${obj.name}이(가) ${obj.evolution}으로 되었다!`);
+        }
+      }
+
+      levelUp(charmander);
+      levelUp(charmander);
+      levelUp(pikachu);
+    </script>
+  </head>
+  <body></body>
+</html>
