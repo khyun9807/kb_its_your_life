@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        let inputobj = document.querySelector('#krwInput');
+        let pobj = document.querySelector('#usdResult');
+
+        inputobj.addEventListener('keyup', function (e) {
+          let val = Math.floor(inputobj.value);
+          val = val / 1300;
+          val = Math.floor(val * 100) / 100;
+
+          pobj.textContent = '달러(USD): ' + val;
+          e.defaultPrevented();
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <input type="number" id="krwInput" placeholder="원화 입력" />
+    <p id="usdResult">달러(USD):</p>
+  </body>
+</html>

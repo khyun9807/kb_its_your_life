@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        let buttonObj = document.querySelector('#btn');
+
+        buttonObj.addEventListener('click', function () {
+          let textObj = document.querySelector('#name');
+          console.log(textObj.value); // 표준 속성이니까 객체.속성명 으로 접근
+          console.log(textObj.getAttribute('value222'));
+          return false;
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <form>
+      <label for="name">이름:</label>
+      <input
+        id="name"
+        name="name"
+        type="text"
+        size="30"
+        value222="default valuleasdfasdf"
+      />
+      <input id="btn" type="button" value="전송" />
+    </form>
+  </body>
+</html>

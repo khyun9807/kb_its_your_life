@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        let image = document.querySelector('#image');
+
+        if (image != null) {
+          image.src =
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDXRL1awJuRifFjzHpw65Y8J_rx_hy_WAvPdS1WWtIGw8_UqF-YeGjJjM&usqp=CAE&s';
+          image.style.height = '50px';
+          image.style.width = '50px';
+          image.setAttribute('kkh', 'yyy');
+        }
+
+        console.log(image);
+      };
+    </script>
+  </head>
+  <body>
+    <img id="image" kkh:"ggg"/>
+  </body>
+</html>
