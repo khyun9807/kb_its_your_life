@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h2>{{message}}</h2>
+      <!-- 뷰에서 {{}} 가 의미하는 건 뭘까 -->
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <!-- 후에는 플러그인을 코드에 직접 쓴거고
+    후에는 cli를 통해서 플러그인 진행할 예정 -->
+    <script>
+      let model = { message: 'Hello Vue3!' };
+      let vm = Vue.createApp({
+        name: 'App',
+        data: function () {
+          return model;
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
