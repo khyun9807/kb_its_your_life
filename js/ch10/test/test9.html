@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        const currentPrice = 75000;
+        let inputobj = document.querySelector('#targetPrice');
+        let btnobj = document.querySelector('#setTargetBtn');
+        let pobj = document.querySelector('#alertMessage');
+
+        btnobj.addEventListener('click', function () {
+          let vals = Math.floor(inputobj.value);
+          let newstring = '';
+          if (vals > currentPrice) {
+            newstring = '아직';
+          } else {
+            newstring = '매도하셈~';
+          }
+
+          pobj.textContent = newstring;
+
+          return false;
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <input type="number" id="targetPrice" placeholder="목표 주가 입력" />
+    <button id="setTargetBtn">목표 설정</button>
+    <p id="alertMessage"></p>
+  </body>
+</html>

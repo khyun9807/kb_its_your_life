@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        const getDateDiff = (d1, d2) => {
+          const date1 = new Date(d1);
+          const date2 = new Date(d2);
+
+          const diffDate = date1.getTime() - date2.getTime();
+          if (diffDate > 0) return -1;
+
+          return Math.abs(diffDate / (1000 * 60 * 60 * 24)); // 밀리세컨 * 초 * 분 * 시 = 일
+        };
+
+        let pobj = document.querySelector('#daysLeft');
+        let inputobj = document.querySelector('#expiryDate');
+
+        let curdate = new Date();
+
+        inputobj.addEventListener('change', function () {
+          let str = '';
+          let stddate = inputobj.value;
+
+          let val = Math.floor(getDateDiff(curdate, stddate));
+
+          if (val < 0) {
+            str = '만기일 지났습니다';
+          } else {
+            val++;
+            val++;
+            str = '만기일까지 ' + val + '일 남았습니다.';
+          }
+          pobj.textContent = str;
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <input type="date" id="expiryDate" />
+    <p id="daysLeft"></p>
+  </body>
+</html>

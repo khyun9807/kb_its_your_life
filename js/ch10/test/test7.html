@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //   window.onload = function () {};
+      function addTransaction(money) {
+        let ulobj = document.querySelector('#transactionHistory');
+        let curdate = new Date();
+        let newstring =
+          Math.floor(money).toLocaleString() +
+          '원 이체완료 - ' +
+          curdate.toString();
+        let prevhtml = ulobj.innerHTML;
+        let newhtml = '<li>' + newstring + '</li>' + prevhtml;
+        ulobj.innerHTML = newhtml;
+      }
+    </script>
+  </head>
+  <body>
+    <ul id="transactionHistory"></ul>
+
+    <button onclick="addTransaction(100000)">100,000원 이체</button>
+    <button onclick="addTransaction(50000)">50,000원 이체</button>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        let textObj = document.querySelector('#newsInput');
+        let btnObj = document.querySelector('#addNewsBtn');
+        let ulObj = document.querySelector('#newsList');
+
+        alert('뉴스 입력해');
+
+        btnObj.addEventListener('click', function () {
+          let textval = textObj.value;
+          if (textval == '' || textval == null) {
+            alert('again');
+            return false;
+          }
+          let prevul = ulObj.innerHTML;
+          let newul = '<li>' + textval + '</li>';
+
+          ulObj.innerHTML = newul + prevul;
+
+          return false;
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <input type="text" id="newsInput" placeholder="금융 뉴스 입력" />
+    <button id="addNewsBtn">뉴스 추가</button>
+    <ul id="newsList"></ul>
+  </body>
+</html>

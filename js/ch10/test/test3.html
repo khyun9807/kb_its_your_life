@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        let money = Math.floor(Math.random() * 1000000);
+        let pObj = document.querySelector('#balanceDisplay');
+        let btnObj = document.querySelector('#checkBalanceBtn');
+
+        btnObj.addEventListener('click', function () {
+          if (pObj != null) {
+            pObj.textContent =
+              '잔액: ' + Math.floor(money / 1000) + ',' + (money % 1000) + '원';
+          }
+          return false;
+        });
+
+        if (pObj != null) {
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <button id="checkBalanceBtn">잔액 조회</button>
+    <p id="balanceDisplay">잔액: ? 원</p>
+  </body>
+</html>
