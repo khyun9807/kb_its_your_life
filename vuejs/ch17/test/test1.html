@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h2>취미생활</h2>
+      <label for="">
+        <input type="checkbox" value="a" v-model="hobby" /> 운동
+      </label>
+      <label for="">
+        <input type="checkbox" value="b" v-model="hobby" /> 독서
+      </label>
+      <label for="">
+        <input type="checkbox" value="c" v-model="hobby" /> 음악
+      </label>
+      <label for="">
+        <input type="checkbox" value="d" v-model="hobby" /> 댄스
+      </label>
+      <br />
+      <h1 v-text="str"></h1>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data: function () {
+          let tstr = hobby.join(',');
+          return {
+            hobby: [],
+            str: tstr,
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

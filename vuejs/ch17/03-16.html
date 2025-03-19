@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <h2>취미생황</h2>
+        <label>
+          <input type="checkbox" value="A" v-model="hobby" /> 운동
+        </label>
+        <label>
+          <input type="checkbox" value="B" v-model="hobby" /> 독서
+        </label>
+        <label>
+          <input type="checkbox" value="C" v-model="hobby" /> 음악
+        </label>
+        <label>
+          <input type="checkbox" value="D" v-model="hobby" /> 댄스
+        </label>
+        <label>
+          <input type="checkbox" value="E" v-model="hobby" /> 역사
+        </label>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let model = { message: '<h2>hello vue3</h2>' };
+      let vm = Vue.createApp({
+        name: 'App',
+        data: function () {
+          return {
+            hobby: [],
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

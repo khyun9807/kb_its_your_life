@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-bind:value="message" />
+      <br />
+      <img v-bind:src="imagePath" alt="" />
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let model = { message: '<h2>hello vue3</h2>' };
+      let vm = Vue.createApp({
+        name: 'App',
+        data: function () {
+          return {
+            message: 'v-bind directive',
+            imagePath: 'https://contactsvc.bmaster.kro.kr/photos/18.jpg',
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
