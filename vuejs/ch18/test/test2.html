@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      이름: <input type="text" v-model="vname" /> <br />
+      나이: <input type="text" v-model.number="vage" /> <br />
+      <button @click.prevent.stop="enroll">입학 승인</button>
+      <p>{{result}}</p>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vname = '';
+      let vage = 0;
+      let result = '';
+      let vm = Vue.createApp({
+        name: 'App',
+        data: function () {
+          return {
+            vname,
+            vage,
+            result,
+          };
+        },
+        methods: {
+          enroll() {
+            this.vage = parseInt(this.vage);
+            if (this.vage < 11 || this.vage > 18) {
+              this.result = '11세 이상 18세 이하로 입력하세요';
+            } else if (this.vname.length < 2) {
+              this.result = '이름은 2글자 이상 입력해주세요';
+            } else if (
+              (function () {
+                for (let i = 0; i < vname.length; i++) {
+                  if (!isNaN(vname[i])) {
+                    return true;
+                  }
+                }
+                return false;
+              })()
+            ) {
+              this.result = '이름에는 숫자를 포함할 수 없다';
+            } else {
+              this.result = `${this.vname}, ${this.vage} 입학 축하`;
+            }
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

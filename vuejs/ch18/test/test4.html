@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      이름: <input type="text" v-model="namee" /><br />
+      출생 연도: <input type="text" @input="cbirthyear" /><br />
+      <p>{{resultfunc}}</p>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let classs = '';
+      let namee = '';
+      let birthyear = 0;
+      let result = '조건을 충족해주세요!';
+      let agee = 0;
+      let vm = Vue.createApp({
+        name: 'App',
+        data: function () {
+          return {
+            namee,
+            birthyear,
+            result,
+            classs,
+            agee,
+          };
+        },
+        computed: {
+          resultfunc() {
+            console.log(this.birthyear, this.namee, this.classs, this.agee);
+            if (!isNaN(this.agee)) {
+              if (this.agee < 11 || this.agee >= 19) {
+                this.result = '입학 대상 연령이 아닙니다';
+              } else if (this.classs != '') {
+                this.result = `${this.namee}님은 ${this.classs}에 배정되었습니다. 나이: ${this.agee}`;
+              }
+            }
+
+            return this.result;
+          },
+        },
+        watch: {
+          namee(cur, old) {
+            if (
+              cur[0] == 'a' ||
+              cur[0] == 'e' ||
+              cur[0] == 'i' ||
+              cur[0] == 'o' ||
+              cur[0] == 'u'
+            ) {
+              this.classs = '그리핀도르';
+            } else if (cur.length >= 5) {
+              this.classs = '래번클로';
+            } else if (cur[cur.length - 1] == 'n') {
+              this.classs = '후플푸프';
+            } else {
+              this.classs = '슬리데린';
+            }
+            //console.log(this.classs);
+          },
+        },
+        methods: {
+          cbirthyear(e) {
+            this.birthyear = e.target.value;
+            this.birthyear = parseInt(this.birthyear);
+            let curyear = new Date();
+            curyear = curyear.getFullYear();
+            this.agee = curyear - this.birthyear;
+            //console.log(this.agee);
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

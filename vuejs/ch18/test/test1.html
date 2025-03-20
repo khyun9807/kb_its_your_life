@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h2>사용자목록</h2>
+      <span>정렬기준:</span>
+      <input type="radio" value="a" v-model="sorts" />id
+      <input type="radio" value="b" v-model="sorts" />name
+      <input type="radio" value="c" v-model="sorts" />username
+      <input type="radio" value="d" v-model="sorts" />phone
+      <table>
+        <thead>
+          <td>id</td>
+          <td></td>
+          <td>name</td>
+          <td></td>
+          <td>username</td>
+          <td></td>
+          <td>phone</td>
+          <td></td>
+          <td>company</td>
+        </thead>
+        <tr v-for="ele in eles" :key="ele.id">
+          <td>{{ele.id}}</td>
+          <td></td>
+          <td>{{ele.name}}</td>
+          <td></td>
+          <td>{{ele.username}}</td>
+          <td></td>
+          <td>{{ele.phone}}</td>
+          <td></td>
+          <td>{{ele.company}}</td>
+        </tr>
+      </table>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data: function () {
+          return {
+            sorts: 0,
+            eles: [
+              {
+                id: 1,
+                name: 'armstrong',
+                username: 'nil',
+                phone: 1024322,
+                company: 'nasa',
+              },
+              {
+                id: 2,
+                name: 'yura',
+                username: 'choi',
+                phone: 1244254,
+                company: 'mulcamp',
+              },
+              {
+                id: 3,
+                name: 'james',
+                username: 'park',
+                phone: 4324322,
+                company: 'mbc',
+              },
+              {
+                id: 4,
+                name: 'kyeonghyeonkwon',
+                username: 'kkh',
+                phone: 10288622,
+                company: 'kbbank',
+              },
+            ],
+          };
+        },
+        watch: {
+          sorts(cur, old) {
+            console.log(cur, old);
+            switch (cur) {
+              case 'a':
+                this.eles.sort(function (a, b) {
+                  return a.id - b.id;
+                });
+                break;
+              case 'b':
+                this.eles.sort(function (a, b) {
+                  let resa = a.name.toUpperCase();
+                  let resb = b.name.toUpperCase();
+                  if (resa > resb) return 1;
+                  else return -1;
+                });
+                break;
+              case 'c':
+                this.eles.sort(function (a, b) {
+                  let resa = a.username.toUpperCase();
+                  let resb = b.username.toUpperCase();
+                  if (resa > resb) return 1;
+                  else return -1;
+                });
+                break;
+              case 'd':
+                this.eles.sort(function (a, b) {
+                  let resa = a.company.toUpperCase();
+                  let resb = b.company.toUpperCase();
+                  if (resa > resb) return 1;
+                  else return -1;
+                });
+                break;
+            }
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
