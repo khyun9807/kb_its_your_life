@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      .empt {
+        color: green;
+      }
+      .used {
+        color: red;
+      }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container-fluid pt-5 ps-5 pe-5">
+        <h1>3번 문제: 좌석 현황 표시 (랜덤 상태 갱신)</h1>
+        <button class="btn btn-success" @click.prevent="pushed">
+          <i class="fa-solid fa-location-dot"></i>좌석 현황 새로고침
+        </button>
+
+        <ul class="list-group">
+          <li class="list-group-item" v-show="!isShow[0]">
+            <i class="fa-solid fa-location-dot"></i>창가 -
+            <span class="empt">비어있음</span>
+          </li>
+          <li class="list-group-item" v-show="isShow[0]">
+            <i class="fa-solid fa-location-dot"></i>창가 -
+            <span class="used">사용중 </span>
+          </li>
+          <li class="list-group-item" v-show="!isShow[1]">
+            <i class="fa-solid fa-location-dot"></i>복도 -
+            <span class="empt">비어있음</span>
+          </li>
+          <li class="list-group-item" v-show="isShow[1]">
+            <i class="fa-solid fa-location-dot"></i>복도 -
+            <span class="used">사용중 </span>
+          </li>
+          <li class="list-group-item" v-show="!isShow[2]">
+            <i class="fa-solid fa-location-dot"></i>우대석 -
+            <span class="empt">비어있음</span>
+          </li>
+          <li class="list-group-item" v-show="isShow[2]">
+            <i class="fa-solid fa-location-dot"></i>우대석 -
+            <span class="used">사용중 </span>
+          </li>
+          <li class="list-group-item" v-show="!isShow[3]">
+            <i class="fa-solid fa-location-dot"></i>출입구 옆 -
+            <span class="empt">비어있음</span>
+          </li>
+          <li class="list-group-item" v-show="isShow[3]">
+            <i class="fa-solid fa-location-dot"></i>출입구 옆 -
+            <span class="used">사용중 </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return {
+            isShow: [false, false, false, false],
+          };
+        },
+        methods: {
+          pushed() {
+            for (let i = 0; i < 4; i++) {
+              this.isShow[i] = parseInt(Math.random() * 10) % 2 == 0;
+            }
+            console.log(this.isShow);
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
