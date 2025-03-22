@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="choose">엘더 지팡이</button>
+      <button @click="choose">단풍 지팡이</button>
+      <button @click="choose">벚나무 지팡이</button>
+      <button @click="choose">지팡이 초기화</button>
+      <br />
+      <p>{{result}}</p>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let result = '지팡이 선택해주세요';
+      let vm = Vue.createApp({
+        name: 'App',
+        data: function () {
+          return {
+            result,
+          };
+        },
+        methods: {
+          choose(e) {
+            let str = e.target.textContent;
+
+            if (str === '지팡이 초기화') {
+              this.result = '지팡이 초기화';
+            } else {
+              if (this.result.includes(str)) {
+                this.result = `당신은 이미 ${str}를 선택했잖아요`;
+              } else {
+                this.result = `당신은 ${str}를 선택했습니다`;
+              }
+            }
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

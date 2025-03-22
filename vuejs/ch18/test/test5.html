@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      마법주문: <input type="text" @keyup.enter="getSpell" />
+      <br />
+      <p>{{getResult}}</p>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data: function () {
+          return {
+            prev: '',
+            result: '',
+            spells: [],
+          };
+        },
+        computed: {
+          getResult() {
+            return this.result;
+          },
+        },
+        methods: {
+          getSpell(e) {
+            let content = e.target.value;
+            if (content == this.prev) {
+              this.result = '이미 직전에 발사했잖아요';
+              return;
+            }
+
+            if (content.length < 3) {
+              this.result = '올바른 주문을 입력하세요!';
+            } else {
+              let findit = false;
+              let spell;
+              for (let i = 0; i < this.spells.length; i++) {
+                spell = this.spells[i];
+                if (spell.name == content) {
+                  findit = true;
+                  break;
+                }
+              }
+              if (findit) {
+                spell.count++;
+                this.result = `${spell.name} 발사 : 지금까지 ${spell.count}회`;
+                this.prev = spell.name;
+              } else {
+                this.spells.push({
+                  name: content,
+                  count: 1,
+                });
+                this.result = `${content} 발사 : 지금까지 1회`;
+                this.prev = content;
+              }
+            }
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
