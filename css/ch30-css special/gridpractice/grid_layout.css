@@ -1,0 +1,142 @@
+/* 12 그리드 시스템 사용 */
+
+/* 모바일 미디어 쿼리 - 무지정 */
+
+/* bootstrap 12 grid system을 이해하기 위한 */
+
+.grid {
+  display: grid;
+
+  /* 픽셀이 아닌
+    1fr시 12 등분으로 균일하게 나눠 갖겠다
+    라는 뜻.  */
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+
+  /* 갭지정 */
+  /* grid-row: 1rem;
+  grid-column: 1rem; */
+  gap: 1rem; /* 한문장으로 가능 */
+}
+
+/* 그리드 12개
+그리드 1개일때, 2개일때 ...  */
+.column-xs-1 {
+  grid-column: span 1 / span 1;
+  /* 한칸만 먹음 */
+}
+.column-xs-2 {
+  grid-column: span 2 / span 2;
+  /* 2칸 먹음.. */
+}
+.column-xs-3 {
+  grid-column: span 3 / span 3;
+}
+.column-xs-4 {
+  grid-column: span 4 / span 4;
+}
+.column-xs-5 {
+  grid-column: span 5 / span 5;
+}
+.column-xs-6 {
+  grid-column: span 6 / span 6;
+}
+.column-xs-7 {
+  grid-column: span 7 / span 7;
+}
+.column-xs-8 {
+  grid-column: span 8 / span 8;
+}
+.column-xs-9 {
+  grid-column: span 9 / span 9;
+}
+.column-xs-10 {
+  grid-column: span 10 / span 10;
+}
+.column-xs-11 {
+  grid-column: span 11 / span 11;
+}
+.column-xs-12 {
+  grid-column: span 12 / span 12;
+}
+
+/* 태블릿 */
+/* css에서 멀티 커서 대상 드래그하고 cntrl+d */
+@media screen and (min-width: 768px) {
+  .column-sm-1 {
+    grid-column: span 1 / span 1;
+  }
+  .column-sm-2 {
+    grid-column: span 2 / span 2;
+  }
+  .column-sm-3 {
+    grid-column: span 3 / span 3;
+  }
+  .column-sm-4 {
+    grid-column: span 4 / span 4;
+  }
+  .column-sm-5 {
+    grid-column: span 5 / span 5;
+  }
+  .column-sm-6 {
+    grid-column: span 6 / span 6;
+  }
+  .column-sm-7 {
+    grid-column: span 7 / span 7;
+  }
+  .column-sm-8 {
+    grid-column: span 8 / span 8;
+  }
+  .column-sm-9 {
+    grid-column: span 9 / span 9;
+  }
+  .column-sm-10 {
+    grid-column: span 10 / span 10;
+  }
+  .column-sm-11 {
+    grid-column: span 11 / span 11;
+  }
+  .column-sm-12 {
+    grid-column: span 12 / span 12;
+  }
+}
+
+/* 데스크탑 */
+@media screen and (min-width: 1024px) {
+  .column-md-1 {
+    grid-column: span 1 / span 1;
+  }
+  .column-md-2 {
+    grid-column: span 2 / span 2;
+  }
+  .column-md-3 {
+    grid-column: span 3 / span 3;
+  }
+  .column-md-4 {
+    grid-column: span 4 / span 4;
+  }
+  .column-md-5 {
+    grid-column: span 5 / span 5;
+  }
+  .column-md-6 {
+    grid-column: span 6 / span 6;
+  }
+  .column-md-7 {
+    grid-column: span 7 / span 7;
+  }
+  .column-md-8 {
+    grid-column: span 8 / span 8;
+  }
+  .column-md-9 {
+    grid-column: span 9 / span 9;
+  }
+  .column-md-10 {
+    grid-column: span 10 / span 10;
+  }
+  .column-md-11 {
+    grid-column: span 11 / span 11;
+  }
+  .column-md-12 {
+    grid-column: span 12 / span 12;
+  }
+}

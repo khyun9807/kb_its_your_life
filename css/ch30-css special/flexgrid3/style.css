@@ -1,0 +1,85 @@
+.grid-container {
+  /* grid 특성을 지닌 grid container 지정. */
+  display: grid;
+
+  /* 열의 특성을 지정
+  열에 해당하는 애들의 너비를 지정
+  셀의 가로. 갯수만큼 열의 갯수 지정됨.
+  1열 100px 2열 100px */
+  /* grid-template-columns: 100px 100px; */
+  grid-template-columns: repeat(3, 100px);
+  /* repeat로 반복적인 것을 표현 가능 
+  현재 3개 100px이니까 3열로 지정됨 */
+
+  /* 그리드는 열이 우선
+  우선 열을 배치하고 그 다음에 행을 지정 */
+
+  /* 행의 특성을 지정 
+  행에 해당하는 애들의 높이를 지정
+  셀의 세로. 갯수만큼 행의 갯수 지정됨.
+  1행 100px 2행 100px */
+  grid-template-rows: 100px 100px;
+  /* 만약 3줄인데 100px2 개면?
+  마지막 줄은 적용 안됨. */
+
+  /* 크기의 최솟과 최댓값 지정 */
+  /* grid-template-columns: minmax(100px, auto); */
+  /* grid-template-columns: repeat(3, minmax(100px, auto)); */
+
+  /* 적용 안되는 행 줄들에 영향을 주는 속성 
+  유동적으로 늘어나는 행에 적용*/
+  grid-auto-rows: 100px;
+
+  /* 열과 열 사이의 갭을 지정 */
+  column-gap: 1rem;
+
+  /* 행과 행 사이의 갭을 지정 */
+  row-gap: 1rem;
+
+  /* 아이템
+  메인축 방향을 어떻게 배치할지 지정 */
+  /* justify-items: end; */
+
+  /* 아이템
+  교차축 방향을 어떻게 배치할지 지정 */
+  /* align-items: end; */
+
+  /* 배치 정렬 지정 값이 stetch일때는 
+  메인축 교차축 사이즈가 지정되지 않았을 때만 적용됨 */
+}
+
+.grid-item {
+  color: white;
+  background-color: pink;
+}
+
+.grid-item:nth-child(2n) {
+  background-color: coral;
+}
+
+.grid-item:nth-child(3n) {
+  background-color: greenyellow;
+}
+
+.grid-item:nth-child(4n) {
+  background-color: blueviolet;
+}
+
+.item2 {
+  /* 그리드 넘버를 활용한 지정 후 적용 */
+  /* item2클래스를 가진 
+  그리드 셀의 열 시작과 끝 라인지정 */
+  /* grid-column-start: 2; */
+  /* grid-column-end: 4; */
+
+  /* 둘 문장을 아래 한 문장으로 표현 가능 */
+  /* grid-column: 2/4; */
+  /* offset지정하여 표현*/
+  grid-column: 2 / span 2;
+
+  /* item2클래스를 가진 
+  그리드 셀의 너비 시작과 끝 라인지정 */
+  grid-row-start: 1;
+  grid-row-end: 3;
+  /* 합병 되는 효과가 나죠? */
+}

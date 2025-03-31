@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <!-- 그리드 레이아웃은 2차원
+        가로 세로를 고려한 레이아웃.
+        행과 열로 구성되어있는 레이아웃.
+        가장 겉에 있는 요소 그리드 컨테이너
+        그리드 컨테이너 안에는 
+        여러 그리드 셀들이 격자식으로 배치돼있음.
+
+        그리드 셀은 한 칸을 의미함.
+        그리드 셀은 행과 열을 채움.
+        그리드 셀 간의 공간은 그리드 갭.
+        그리드 갭을 나타내는 선은 그리드 라인.
+        그리드 갭과 겉에는 1,1 1,2 3,4 4,4처럼
+        고유 숫자가 부여된다.
+        이를 그리드 넘버라고 한다.
+
+        그리드 셀 안에 들어있는 실질적 요소는
+        그리드 아이템.
+
+        f12디버깅 모드에서 element 에서 
+        그리드를 선택하면
+        그리드를 시각화하여 편리하다
+    -->
+  <link rel="stylesheet" href="style.css" />
+  <body>
+    <!-- 
+    div.grid-container>div.grid-item.item${$}*8
+     -->
+    <div class="grid-container">
+      <div class="grid-item item1">
+        1
+
+        <!-- 그리드 셀을 벗어나는 내용들이 들어있어도
+         그리드 컨테이너가 지정한 셀의 너비와 높이는
+         유지된다. 내용은 벗어난다.
+         하지만 minmax로 범위를 유동적으로 조절할 수
+         있는 옵션이 있다 -->
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis vitae
+        nesciunt maiores voluptate, aliquam magnam tenetur dolores laborum, eum,
+        illo dicta labore quidem fugit saepe. Accusamus beatae possimus magni
+        asperiores.
+      </div>
+      <div class="grid-item item2">2</div>
+      <div class="grid-item item3">3</div>
+      <div class="grid-item item4">4</div>
+      <div class="grid-item item5">5</div>
+      <div class="grid-item item6">6</div>
+      <div class="grid-item item7">7</div>
+      <div class="grid-item item8">8</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,98 @@
+/* 클래스명 이름 규칙
+블록
+블록__내부요소  블록 안에 들어있는 내부요소
+이런 규칙 중 하나인 BEM 방법론
+Block Element Modifier 방법론의 클래스명 규칙 참고
+
+자식 선택자로 계속 꼬리를 물지 않아서 좋다.
+조무모 부모 자식 손자 { ... } 별로.
+
+클래스명마다 고유해야하는게 BEM핵심.
+
+css에서는 케밥이나 _만 사용하여 클래스명을 짓는다
+낙타를 쓰지 않는다.
+*/
+
+/* 
+css의 미래는 tailwind css.
+*/
+
+/* 
+선택자 점수에 따라 적용 우선순위가 결정되고
+점수가 같다면 그제서야 순서에 따른다
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* 리셋코드 */
+}
+
+body {
+  font-family: sans-serif;
+  line-height: 1.6;
+  background-color: bisque;
+}
+
+.header {
+  background-color: beige;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.header__title {
+  font-size: 1.5rem;
+}
+
+/* 레이아웃 */
+.layout {
+  /* 플렉스 특성 부여하고 */
+  display: flex;
+  /* 사이드바와 메인본문 파트가 나란히 */
+  padding: 1rem;
+
+  /* 요소간 간격을 주는 gap 속성 */
+  gap: 1rem;
+}
+
+/* sidebar */
+.sidebar {
+  width: 50px;
+  flex-shrink: 0;
+
+  background-color: aliceblue;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid cornsilk;
+}
+
+.sidebar__nav ul {
+  list-style: none;
+  /* 앞에 점 붙는거 제거 */
+}
+
+.sidebar__nav li {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar__nav a {
+  /* a태그 기본 디자인 없애기 */
+  text-decoration: none;
+  color: blueviolet;
+}
+
+.main {
+  background-color: white;
+  padding: 1.5rem;
+  border: 1px solid cornsilk;
+}
+
+.footer {
+  background-color: burlywood;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
