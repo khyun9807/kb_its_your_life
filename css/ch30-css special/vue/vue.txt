@@ -1,0 +1,4 @@
+vuejs 공식사이트가 하라는데로 하는게 베스트
+
+//npm init vue 프로젝트명 대신!
+npm create vue@latest
