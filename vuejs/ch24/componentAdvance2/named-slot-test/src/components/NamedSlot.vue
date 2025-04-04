@@ -1,46 +1,47 @@
 <template>
   <div>
-    <CheckBox9
+    <h1>Name</h1>
+    <CheckBox
       v-for="item in items"
       :key="item.id"
-      :checked="item.checked"
       :id="item.id"
-      @checked-change="CCHandler"
+      checked="item.checked"
+      @cc="CCHandler"
     >
       <template v-slot:iconslot>
-        <i>{{ item.label }}</i>
+        <i>icon~~</i>
       </template>
       <template v-slot:textslot>
-        <span v-if="item.checked">
-          <li>{{ item.label }}</li>
-        </span>
-        <span v-else>{{ item.label }}</span>
+        <span v-if="item.checked"> checked {{ item.label }} </span>
+        <span v-else> unchecked {{ item.label }} </span>
       </template>
-    </CheckBox9>
+    </CheckBox>
   </div>
 </template>
 
 <script>
-import CheckBox9 from './CheckBox9.vue';
+import CheckBox from './CheckBox.vue';
 
 export default {
   name: 'NamedSlot',
-  components: { CheckBox9 },
+  components: { CheckBox },
   data() {
     let model = {
       items: [
         { id: 'V', checked: true, label: 'Vue' },
-        { id: 'R', checked: false, label: 'React' },
-        { id: 'A', checked: false, label: 'Angular' },
-        { id: 'S', checked: false, label: 'Svelte' },
+        { id: 'R', checked: true, label: 'React' },
+        { id: 'A', checked: true, label: 'Angular' },
+        { id: 'S', checked: true, label: 'Svelte' },
       ],
     };
-
     return model;
   },
   methods: {
     CCHandler(arg) {
-      let item = this.items.find((i) => i.id === arg.id);
+      let item = this.items.find((i) => {
+        return i.id === arg.id;
+      });
+
       item.checked = arg.checked;
     },
   },
