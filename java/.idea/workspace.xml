@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a5cbd8c-8068-46dc-aa47-680d2195c074" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/../_documents/04Java/06 클래스.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../_documents/04Java/06 클래스.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_documents/04Java/08 인터페이스.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../_documents/04Java/08 인터페이스.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_documents/04Java/09 중첩 선언과 익명 객체.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../_documents/04Java/09 중첩 선언과 익명 객체.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_documents/04Java/11 예외 처리.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../_documents/04Java/11 예외 처리.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_documents/04Java/12 java.base 모듈.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../_documents/04Java/12 java.base 모듈.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_documents/04Java/[참고] 디자인 패턴/part1/00 객체지향 설계원칙-SOLID.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../_documents/04Java/[참고] 디자인 패턴/part1/00 객체지향 설계원칙-SOLID.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_documents/04Java/[참고] 디자인 패턴/part1/01 Iterator - 처리를 반복하다.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../_documents/04Java/[참고] 디자인 패턴/part1/02 Adapter - 사이에 끼워 재사용한다.pdf" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,10 +18,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2vnRBst0DCcvYcEt3IU6B9PxkGx" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -27,6 +33,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/student/Desktop/kb_fullstack/java",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -48,6 +55,7 @@
       <option name="presentableId" value="Default" />
       <updated>1744778720360</updated>
       <workItem from="1744778721971" duration="18000" />
+      <workItem from="1745373927429" duration="48000" />
     </task>
     <servers />
   </component>
