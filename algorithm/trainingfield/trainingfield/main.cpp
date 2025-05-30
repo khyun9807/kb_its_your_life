@@ -1,148 +1,121 @@
-#include<iostream>
-#include<deque>
+#include <string>
+#include <vector>
+#include <deque>
+#include <unordered_map>
+#include <iostream>
 
 using namespace std;
 
-int nodenum = 9;
+//          hit--hot
+//             /  |
+//          dot--lot---log
+//           |          |
+//          dog--------cog
 
-deque<deque<int>> matrix;
-/*
-1   2--------3      4-----
-|   |      / |      |    |
-5   |     /   -- 6 --    |
-|   /     |    / |       |
-|  /      |  /   |       |
- 7---------8-----9--------
-*/
+//words 에 begin, target추가
+//words에서 그래프 생성 시작
+//시간 제한 없기에 2차워 루프 돌며 순회하며 비교
+//비교시 한 글자만 다를 경우 그래프 연결로 간주.
+//그래프 완성 끝
+//완성된 그래프에서 목표는 '단계'가 적게 목표에 도착.
+//=> BFS다 이말이야 암. 
 
+bool isNeighbor(string start, string end) {
+    int count = 0;
+    int slen = start.length();
 
-void init() {
-	matrix.push_back({});
-	for (int i = 1;i <= 9;i++) {
-		matrix.push_back({});
-	}
+    for (int i = 0;i < slen;i++) {
+        if (start.at(i) != end.at(i)) {
+            count++;
+        }
+    }
 
-	matrix.at(1).push_back(5);
-
-	matrix.at(2).push_back(3);
-	matrix.at(2).push_back(7);
-
-	matrix.at(3).push_back(2);
-	matrix.at(3).push_back(6);
-	matrix.at(3).push_back(8);
-
-	matrix.at(4).push_back(6);
-	matrix.at(4).push_back(9);
-
-	matrix.at(5).push_back(1);
-	matrix.at(5).push_back(7);
-
-	matrix.at(6).push_back(3);
-	matrix.at(6).push_back(4);
-	matrix.at(6).push_back(8);
-	matrix.at(6).push_back(9);
-
-	matrix.at(7).push_back(2);
-	matrix.at(7).push_back(5);
-	matrix.at(7).push_back(8);
-
-	matrix.at(8).push_back(3);
-	matrix.at(8).push_back(6);
-	matrix.at(8).push_back(7);
-	matrix.at(8).push_back(9);
-
-	matrix.at(9).push_back(4);
-	matrix.at(9).push_back(6);
-	matrix.at(9).push_back(8);
+    return count == 1;
 }
 
-void bfs(int startnode) {
-	deque<bool> readed(nodenum + 1, false);
-	
-	deque<int> que;
-	deque<bool> reserved(nodenum + 1, false);
+int solution(string begin, string target, vector<string> words) {
+
+    words.push_back(begin);
+    int wlen = words.size();
+
+    deque<deque<int>> matrix(wlen);
 
 
-	que.push_back(startnode);
-	reserved.at(startnode)=true;
+    for (int i = 0;i < wlen;i++) {
+        for (int j = 0;j < wlen;j++) {
+            if (i == j) continue;
 
-	while (!que.empty()) {
-		int curnode = que.front();
-		que.pop_front();
+            string sw = words.at(i);
+            string ew = words.at(j);
 
-		if (!readed.at(curnode)) {
-			readed.at(curnode) = true;
-			cout << curnode << " ";
-		}
+            if (isNeighbor(sw, ew)) {
+                matrix.at(i).push_back(j);
+            }
+        }
+    }
 
-		for (int i = 0;i < matrix.at(curnode).size();i++) {
-			int neighbor = matrix.at(curnode).at(i);
+    deque<int> que;
+    deque<bool> reserved(wlen, false);
 
-			if (!reserved.at(neighbor)) {
-				reserved.at(neighbor) = true;
-				que.push_back(neighbor);
-			}
-		}
-	}
+    int cur = wlen - 1;
+    int dest = -1;
+
+    for (int i = 0;i < wlen;i++) {
+        string word = words.at(i);
+        if (word.compare(target) == 0) {
+            dest = i;
+            break;
+        }
+    }
+
+    cout << "dest: " << dest << "\n" << "cur: " << cur << "\n";
+
+    if (dest == -1)
+        return 0;
+
+
+
+    int count = 0;
+
+    que.push_back(cur);
+    reserved.at(cur) = true;
+
+    bool isArrive = false;
+    while (!que.empty()) {
+        cur = que.front();
+        que.pop_front();
+        count++;
+
+        if (cur == dest) {
+            isArrive = true;
+            break;
+        }
+
+        for (int i = 0;i < matrix.at(cur).size();i++) {
+            int neighbor = matrix.at(cur).at(i);
+
+            if (!reserved.at(neighbor)) {
+                que.push_back(neighbor);
+                reserved.at(neighbor) = true;
+            }
+        }
+    }
+
+    if (isArrive)
+        return count;
+    else
+        return 0;
 }
-
-void dfs(int startnode) {
-	deque<bool> readed(nodenum + 1, false);
-
-	deque<int> tracker;
-	deque<bool> tracked(nodenum + 1, false);
-	deque<bool> completed(nodenum + 1, false);
-
-	int curnode = startnode;
-	tracker.push_back(curnode);
-	tracked.at(curnode) = true;
-
-	while (true) {
-		if (!readed.at(curnode)) {
-			readed.at(curnode) = true;
-			cout << curnode << " ";
-		}
-
-		bool isCurCompleted = true;
-
-		for (int neighbor : matrix.at(curnode)) {
-			if (!tracked.at(neighbor) && !completed.at(neighbor)) {
-				isCurCompleted = false;
-
-				tracker.push_back(neighbor);
-				tracked.at(neighbor)=true;
-
-				break;
-			}
-		}
-
-		if (isCurCompleted) {
-			tracker.pop_back();
-			tracked.at(curnode) = false;
-			completed.at(curnode) = true;
-
-			if (tracker.empty()) {
-				break;
-			}
-			else {
-				curnode = tracker.back();
-			}
-		}
-		else {
-			curnode = tracker.back();
-		}
-	}
-}
-
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cout.tie(0);
+    cout<<solution("hit", "cog", { "hot", "dot", "dog", "lot", "log", "cog" });
+    //hot dot dog lot log cog hit
+    // 0   1   2   3   4   5   6
 
-	init();
-
-	dfs(1);
-
-	return 0;
+//          hit--hot
+//             /  |
+//          dot--lot---log
+//           |          |
+//          dog--------cog
+    return 0;
 }
