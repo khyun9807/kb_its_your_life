@@ -25,6 +25,7 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
+    //servlet
     compileOnly('jakarta.servlet:jakarta.servlet-api:6.1.0')
 
     //spring
@@ -42,10 +43,19 @@ dependencies {
     compileOnly 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.3'
     implementation 'javax.servlet:jstl:1.2'
 
-    //log4j2 logging
-    implementation 'org.apache.logging.log4j:log4j-api:2.18.0'
-    implementation 'org.apache.logging.log4j:log4j-core:2.18.0'
+    //log4j2 logging system
+    implementation 'org.apache.logging.log4j:log4j-api:2.0.1'
+    implementation 'org.apache.logging.log4j:log4j-core:2.0.1'
     implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.18.0'
+
+    //jdbc 관련 로그 처리를 위한 로그시스템 라이브러리
+    implementation 'org.slf4j:slf4j-api:2.0.9'
+    runtimeOnly 'org.slf4j:jcl-over-slf4j:2.0.9'
+    runtimeOnly 'org.slf4j:slf4j-log4j12:2.0.9'
+    implementation 'log4j:log4j:1.2.17'
+    implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4:1.16'
+
+
 
     //xml korean
     implementation 'xerces:xercesImpl:2.12.2'
@@ -54,15 +64,15 @@ dependencies {
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
-    //jackson json
+    //jackson json. java object<=>json parsing.
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.4'
 
-    //test
+    //test for spring & lombok
     testImplementation "org.springframework:spring-test:${springVersion}"
     testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
     testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
-    //database
+    //database jdbc & DBCP
     implementation 'com.mysql:mysql-connector-j:8.1.0'
     implementation 'com.zaxxer:HikariCP:2.7.4'
 
