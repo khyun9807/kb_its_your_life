@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--log를 설정할 때 level 이 쓰여있는 것이 보이는데 이 역시 단계가 존재한다.
+높은 등급에서 낮은 등급으로의 6개의 로그 레벨을 가지며 지정한 레벨 등급 이상의 로그만 표출하는 방식이다.
+일반적으로 log level은
+ALL > 다 출력
+TRACE > 경로 추적
+DEBUG > 일반정보를 상세히 나타낼 때
+INFO > 일반정보를 나타낼때
+WARN > 에러는 아니지만 주의가 필요
+ERROR > 일반 에러
+FATAL > 가장 크리티컬한 에러
+OFF 출력하지 말아라 그냥.
+순으로 볼 수 있다. ( 낮은거에서 높은순으로 ALL → OFF)
+결론적으로 DEBUG 를 level로 선언했다면 DEBUG 이상의 것들의 log를 표출하는것이다.
+-->
+<Configuration>
+    <!-- Appender , Layout 설정 -->
+    <Appenders>
+        <!--- Appenders는 로그가 출력되는 위치를 나타냄
+        - 정의한 name은 AppenderRef 태그에서 참조를 할 때 사용-->
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout charset="UTF-8" pattern="%-5level %c(%M:%L) -%m%n"/>
+        </Console>
+    </Appenders>
+
+
+    <!-- Logger 설정 -->
+    <Loggers> <!--로깅 작업의 주체, 각 패키지 별, 로그 정책을 설정 할 수 있다.-->
+        <Root level="INFO"> <!--일반적인 로그 정책에 대해 정의를 할 수 있으며, 반드시 한개를 정의해야한다.-->
+            <AppenderRef ref="console"/>
+        </Root>
+
+        <!--해당 범위에서는 레벨 몇부터만 출력하라와 중복 출력 여부를 지정-->
+        <Logger name="_org.springframework.web.servlet.HandlerMapping.Mappings" level="DEBUG" additivity="false">
+            <!--여러개 정의를 할수 있으며 name에 정의하는 패키지 범위를 설정 할 수 있다.-->
+            <!--- name : 로그의 name, 로그를 정의할 패키지의 범위
+            - level : 로그의 Level(위에 log level 참고)
+            - additivity : 중복로깅여부-->
+            <AppenderRef ref="console"/>
+        </Logger>
+
+        <Logger name="org.scoula" level="INFO" additivity="false">
+            <AppenderRef ref="console"/>
+        </Logger>
+
+        <Logger name="org.springframework" level="INFO" additivity="false">
+            <AppenderRef ref="console"/>
+        </Logger>
+
+        <Logger name="jdbc" level="WARN" additivity="false">
+            <AppenderRef ref="console"/>
+        </Logger>
+
+        <Logger name="jdbc.sqlonly" level="INFO" additivity="false">
+            <AppenderRef ref="console"/>
+        </Logger>
+    </Loggers>
+</Configuration>
