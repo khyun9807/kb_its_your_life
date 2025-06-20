@@ -1,0 +1,73 @@
+6.1 jsp활용.
+6.2 파일을 다룰때 설계, 파일처리(업로드, 다운로드), @Transactional
+--------------------------------------------------------------------------------
+7.1
+rest api에 관하여
+
+api서버에서 CRUD
+
+그냥 Controller에서의 rest api 통신
+vs
+rest api 용 컨트롤러 @RestController에서의 rest api 통신 비교
+
+talend api tester
+
+response entity타입에 대하여 & request body
+
+예외처리)rest api 예외를 처리하는 restcontrolleradvice
+
+---------------------------------------------------------------------------------
+7.2 개발한 rest기반 api를 편리하게 문서화 해주는 도구 Swagger
+Swagger자체에 대하여
+
+Swagger가 적용된 모습들 이미지와 설명
+
+필요 구성 및 준비
+
+알아야할 키워드 
+@Api, @ApiOperation, @ApiParam, @ApiResponses, @ApiResponse,
+@ApiModel, @ApiModelProperty
+
+번외)라이브템플릿 만들기
+------------------------------------------------------------------------------------
+번외) 8 openapi 사용법. 
+rest controller와 rest template
+
+rest template과 spring에 대하여
+
+번외) ROBOPojoGenerator
+
+restTemplate 사용법. 제일 많이 찾아야 할듯
+
+-------------------------------------------------------------------------------------
+번외 AOP)9.1
+aop 자체에 대하여
+
+필요 구성 및 준비
+
+어노테이션들 및 활용
+-----------------------------------------------------------------------------------
+번외) 9.2 실습하면서 이해 필요
+기존 http 통신의 한계.
+
+쌍방향 지속 통신 하고 싶다면?
+
+웹소켓 프로토콜에 대하여
+
+stomp에 대하여
+
+publisher broker subscriber
+
+필요 구성 및 준비
+
+stomp controller에 대해서
+접두어, 토픽문자, 접속url 구별
+@messagemapping @sendto 활용 예시
+뭐가 뭔지
+
+클라에서의 stomp 라이브러리 cdn
+js에서 스톰프 웹소켓 이용
+
+java에서의 stomp의 의미와 js에서의 stomp의 의미
+
+https://m.bunjang.co.kr/products/314139480?q=%EC%9E%90%EB%B0%94%20%EC%9B%B9%20%EA%B0%9C%EB%B0%9C%20%EC%9B%8C%ED%81%AC%EB%B6%81&ref=%EA%B2%80%EC%83%89%EA%B2%B0%EA%B3%BC
