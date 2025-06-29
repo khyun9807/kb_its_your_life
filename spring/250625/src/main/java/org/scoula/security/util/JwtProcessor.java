@@ -15,7 +15,7 @@ import java.util.Date;
 public class JwtProcessor {
     static private final long TOKEN_VALID_MILISECOND=1000L*60*5;
 
-    private String secretKey="dsfasdfasdqepoiqrbvcbmfasdfsdnvlnqpgrmnapdinzonbqporodnipaxpz";
+    private String secretKey="dsfalnjvesdbnkbsfnlklsbfnksvbfnlksvnlkdsvdnlksvdnlkcsvdnlksdfasdqepoiqrbvcbmfasdfsdnvlnqpgrmnapdinzonbqporodnipaxpz";
     private Key key= Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
 
     public String generateToken(String subject){
