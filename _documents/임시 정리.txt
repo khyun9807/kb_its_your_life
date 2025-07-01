@@ -1,24 +1,8 @@
 
 6.2 파일을 다룰때 설계, 파일처리(업로드, 다운로드), @Transactional //later
---------------------------------------------------------------------------------
-7.1
-rest api에 관하여
-
-api서버에서 CRUD
-
-그냥 Controller에서의 rest api 통신
-vs
-rest api 용 컨트롤러 @RestController에서의 rest api 통신 비교
-
-talend api tester
-
-response entity타입에 대하여 & request body
-
-예외처리)rest api 예외를 처리하는 restcontrolleradvice
-
-
 
 ------------------------------------------------------------------------------------
+
 번외) 8 openapi 사용법. 
 rest controller와 rest template
 
@@ -29,6 +13,7 @@ rest template과 spring에 대하여
 restTemplate 사용법. 제일 많이 찾아야 할듯
 
 -----------------------------------------------------------------------------------
+
 번외) 9.2 실습하면서 이해 필요
 기존 http 통신의 한계.
 
