@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    .high-score {
+      border-width: 3px;
+      border-color: green;
+    }
+    .mid-score {
+      border-width: 3px;
+      border-color: orange;
+    }
+    .low-score {
+      border-width: 3px;
+      border-color: red;
+    }
+  </style>
+  <body>
+    <div id="app">
+      <h1>세종대 맛집 추천 리스트</h1>
+      <div class="container row">
+        <div
+          class="container col-md-4 mt-2"
+          v-for="restaurant in restaurants"
+          :key="restaurant.name"
+        >
+          <div class="card" :class="scoreClass(restaurant)">
+            <div class="card-body">
+              <h4>{{restaurant.name}}</h4>
+              <h6>{{getAverage(restaurant)}}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let model = {
+        restaurants: [
+          { name: '빠오즈푸', reviews: [4.7, 4.8, 4.6], average: 0 },
+          { name: '시홍쓰', reviews: [4.2, 4.0, 4.1], average: 0 },
+          { name: '오사이초밥', reviews: [3.7, 3.6, 3.8], average: 0 },
+          { name: '은혜즉석떡볶이', reviews: [4.5, 4.6, 4.5], average: 0 },
+          { name: '우화등선', reviews: [3.2, 3.4, 3.1], average: 0 },
+          { name: '세종원', reviews: [3.9, 4.0, 3.8], average: 0 },
+        ],
+      };
+      let vm = Vue.createApp({
+        name: 'App',
+        data: function () {
+          return model;
+        },
+        computed: {
+          scoreClass() {
+            return (ro) => {
+              //함수를 반환하면 캐싱 효과가 없음. 그러니까 의미 짓을 했음.
+              if (ro.average >= 4.5) {
+                return 'high-score';
+              } else if (ro.average >= 3.5) {
+                return 'mid-score';
+              } else {
+                return 'low-score';
+              }
+            };
+          },
+        },
+        methods: {
+          getAverage(restaurantObj) {
+            let sum = 0;
+            for (let score of restaurantObj.reviews) {
+              sum += score;
+            }
+            restaurantObj.average = parseFloat(
+              (sum / restaurantObj.reviews.length).toFixed(2)
+            );
+            return restaurantObj.average;
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

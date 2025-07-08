@@ -1,0 +1,72 @@
+.flex-container {
+  /* flex 특성을 적용하려면 display를 flex로 */
+  /* 적용하려는 대상들의 부모에 지정. 부모 여기죠 */
+  display: flex;
+  /* flex-container에 들어있는 애들은 (flex-item)
+  들은 이제 flex 특성을 갖게 됨. 디폴트로 가로축
+  정렬이죠? 또한 자동으로 줄어드는 특성을 갖고 있다.*/
+
+  /* 나열 방향을 설정. 메인축 혹은 교차축 */
+  /* flex-direction: row; 기본값 */
+  /* flex-direction: row-reverse; 
+    메인축인데 진행방향 반대로 */
+  /* flex-direction: column; */
+  flex-direction: row;
+
+  /* 랩 값은 아랫요소들이 공간이 부족할떄
+  줄 바꿈을 자동으로 처리할건지 */
+  /* flex-wrap: wrap-reverse; */
+  flex-wrap: wrap;
+
+  /* 메인축 방향으로
+  아랫 요소들 정렬 배치방법 지정
+  중앙에 할지, 끝에다 몰지, 앞에다 몰지, 균일하게..
+  space-evenly는 여백을 기준으로 균등하게
+  space-around는 요소를 기준으로 균등하게
+  */
+  justify-content: space-evenly;
+
+  /* 교착축 방향으로
+  아랫 요소들 정렬 배치방법 지정 */
+  /* 기본값 stretch.
+  아랫 요소의 높이가 지정되지 않았다는 가정하에
+  남는 공간을 아랫 요소를 늘려 채우겠다는 뜻 
+  align-items: stretch; */
+
+  /* center 교착축 가운데, flex-end 교착축의 끝 ... 
+  값들은 메인축 정렬 배치방법 지정과 같다
+  */
+  align-items: center;
+
+  width: 300px;
+  height: 200px;
+  background-color: antiquewhite;
+  border: 1px solide black;
+}
+
+.flex-item {
+  width: 50px;
+  /* 부모 쪽은 300px
+  만약 자녀인 flex-item인 애들이 7개 이상이면?
+  width를 50px 지정한 것이 무색하게 줄어듬
+  flex아이템들은 크기를 자동으로 유연하게 
+  부모인 플렉스 컨테이너에 맞추려함. */
+
+  color: white;
+  background-color: pink;
+
+  /* 부모가 공간이 적다고해서 줄어들 필요 없다고
+  지정하는 속성.
+  자녀인 플렉스 아이템에서만 사용할 수 있는 속성
+  그렇다면 공간이 모자르면? 그냥 부모 범위 삐져나감 */
+  flex-shrink: 0;
+
+  /* 반대로 남아있는 공간을 다 차지하는 속성
+  flex-grow: 1; 
+  flex-grow 적용된게 많다면 지정된 값 만큼 비율을
+  나눠 가진다*/
+}
+
+.flex-item:nth-child(2n) {
+  background-color: orange;
+}

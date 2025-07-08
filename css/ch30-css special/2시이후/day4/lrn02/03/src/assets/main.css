@@ -1,0 +1,42 @@
+* {
+  /* margin: 0; */
+  /* padding: 0; */
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  background-color: #f9fafb;
+  color: #111827;
+}
+
+header {
+  background-color: #4f46e5;
+  text-align: center;
+  color: white;
+  padding: 2.5rem 1.25rem;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.component-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 2.5rem;
+}
+
+.component-card {
+  background-color: white;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.component-card h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}

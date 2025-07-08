@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+      }
+      .title {
+        text-align: center;
+        font-weight: bold;
+        font-size: 20pt;
+      }
+      .todo-done {
+        text-decoration: line-through;
+      }
+      .container {
+        padding: 10px 10px 10px 10px;
+      }
+      .panel-borderless {
+        border: 0;
+        box-shadow: none;
+      }
+      .pointer {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" class="container">
+      <div class="card card-body bg-light">
+        <div class="title">::todolist app</div>
+      </div>
+      <div class="card card-default card-borderless">
+        <div class="card-body">
+          <div class="row mb-3">
+            <div class="col">
+              <div class="input-group">
+                <input
+                  id="msg"
+                  type="text"
+                  class="form-control"
+                  name="msg"
+                  placeholder="할일을 여기에 입력!"
+                  v-model.trim="todo"
+                  @keyup.enter="addTodo"
+                />
+                <span class="btn btn-primary input-group-addon" @click="addTodo"
+                  >추가</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <ul class="list-group">
+                <li
+                  class="list-group-item"
+                  v-for="todoitem in todoList"
+                  :key="todoitem.id"
+                  :class="{'list-group-item':todoitem.completed}"
+                  @click="toggleCompleted(todoitem.id)"
+                >
+                  <span
+                    class="pointer"
+                    :class="{'todo-done':todoitem.completed}"
+                    >{{todoitem.todo}} {{todoitem.completed?"(완료)":""}}
+                  </span>
+                  <span
+                    class="float-end badge bg-secondary pointer"
+                    @click.stop="deleteTodo(todoitem.id)"
+                    >삭제</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let timeStamp = new Date().getTime();
+      let model = {
+        todo: '',
+        todoList: [
+          { id: timeStamp, todo: 'riding bicycle', completed: false },
+          { id: timeStamp + 1, todo: 'walk with daughter', completed: true },
+          { id: timeStamp + 2, todo: 'weekend dog', completed: false },
+          { id: timeStamp + 3, todo: 'write vue essay', completed: false },
+        ],
+      };
+      let vm = Vue.createApp({
+        name: 'App',
+        data: function () {
+          return model;
+        },
+        methods: {
+          addTodo() {
+            if (this.todo.length >= 2) {
+              this.todoList.push({
+                id: new Date().getTime(),
+                todo: this.todo,
+                completed: false,
+              });
+              this.todo = '';
+            }
+          },
+          deleteTodo(id) {
+            let index = this.todoList.findIndex((item) => id === item.id);
+            this.todoList.splice(index, 1);
+          },
+          toggleCompleted(id) {
+            let index = this.todoList.findIndex((item) => id === item.id);
+            this.todoList[index].completed = !this.todoList[index].completed;
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

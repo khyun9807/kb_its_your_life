@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 
+  미디어에 따라 적용할 수 있는 문법
+ 보통
+ css에서 화면 크기 방향 해상도 기기종류 등에 따라
+ 다른 스타일을 적용할 수 있게 해주는 기능
+ -->
+
+    <!--
+  반응형과 적응형 디자인 차이
+  적응형 코딩 - 특정 해상도에 적응되는 코드를
+  따로 작성하겠다는 뜻. 대표적인게 미디어쿼리
+
+  반응형 코딩 - 미디어쿼리 상관없이 모든 코드에서
+  모든 지정 값을 %로 지정하여
+  스타일에 변함없이 일관적으로 표현하는 의미.
+  -->
+
+    <!-- 미디어 쿼ㅣ 문법 형식
+  @media [미디어타입] and (조건){조건에 따른 스타일 코드}
+  
+  미디어타입에는 - all screen print speach 등
+
+  조건에는 - min-width max-width min-height
+            max-height orientation resolution이 있다.
+  실무에서는 min/max-width만 거의 사용한다
+
+  -->
+    <style>
+      @media screen and (min-width: 1024px) {
+        /* 화면의 최소 1024일 때 == 
+        화면이 1024 이상일 때 해당 스타일 코드를
+        적용하라 라는 뜻 */
+        h1 {
+          color: red;
+        }
+      }
+
+      /*
+      순서가 이러니 아랫 것만 적용되겠죠? 
+      미디어 쿼리는 순서가 중요함
+      모바일 태블릿 데스크탑 순서로 하세요.
+      */
+
+      @media screen and (min-width: 762px) {
+        /* 762px이상의 너비를 가질 때 해당 스타일을
+        적용하라 라는 뜻 */
+        h1 {
+          color: blue;
+        }
+      }
+      /* 보통 762<=<=1024는 태블릿
+      컴퓨터는 >=1024. 762>=는 모바일.
+      */
+    </style>
+  </head>
+
+  <body>
+    <h1>dafsdfa</h1>
+  </body>
+</html>

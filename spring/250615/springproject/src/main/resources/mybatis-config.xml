@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration PUBLIC
+        "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration><!--root 태그-->
+    <settings>
+        <!--db에서 칼럼명 snake표기법을
+        java vo객체에서는 필드명을 camel case로-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+
+    </settings>
+
+    <typeAliases>
+        <!--긴 패기지 이름을 생략할 수 있게 하는 설정-->
+
+    </typeAliases>
+
+</configuration>
