@@ -1,73 +1,44 @@
-#include <deque>
 #include <vector>
+#include <deque>
+#include <iostream>
 
 using namespace std;
 
-class node {
-public:
-    node(int sumarg, int crSize) {
-        sum = sumarg;
-        canRob.assign(crSize, true);
-    }
-    node(int sumarg, deque<bool>& cr) {
-        sum = sumarg;
-        canRob = cr;
-    }
+int lengthOfLIS(const vector<int>& nums) {
+    deque<deque<int>> records;
 
-    int sum = 0;
-    deque<bool> canRob;
-};
+    for (const int& num : nums) {
+        bool flag = true;
 
-class Solution {
-public:
-    int rob(vector<int>& nums) {
-        int maxSum = 0;
-        deque<node> bfs;
-
-        int numsSize = nums.size();
-        for (int i = 0;i < numsSize;i++) {
-            int& housenum = i;
-
-            node n(nums.at(housenum), numsSize);
-            n.canRob.at(i) = false;
-            if (i - 1 >= 0) {
-                n.canRob.at(i - 1) = false;
-            }
-
-            if (i + 1 < numsSize) {
-                n.canRob.at(i + 1) = false;
-            }
-
-            bfs.push_back(n);
-        }
-
-        while (!bfs.empty()) {
-            node n = bfs.front();
-            bfs.pop_front();
-
-            if (maxSum < n.sum) {
-                maxSum = n.sum;
-            }
-
-            int nsize = n.canRob.size();
-            for (int i = 0;i < nsize;i++) {
-                if (n.canRob.at(i)) {
-                    node newn(n.sum + nums.at(i), n.canRob);
-                    newn.canRob.at(i) = false;
-
-                    if (i - 1 >= 0) {
-                        newn.canRob.at(i - 1) = false;
-                    }
-
-                    if (i + 1 < numsSize) {
-                        newn.canRob.at(i + 1) = false;
-                    }
-
-                    bfs.push_back(newn);
-                }
+        for (deque<int>& record : records) {
+            if (record.back() < num) {
+                record.push_back(num);
+                flag = false;
             }
         }
 
-        return maxSum;
+        if (flag) {
+            deque<int> temp(1, num);
+            records.push_back(temp);
+        }
     }
-};
+
+    int max = 0;
+    for (deque<int>& record : records) {
+        if (max < record.size()) {
+            max = record.size();
+        }
+    }
+
+    return max;
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0);cout.tie(0);
+
+    cout << lengthOfLIS({ 10,9,2,5,3,7,101,18 });
+
+
+    return 0;
+}
